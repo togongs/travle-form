@@ -14,8 +14,9 @@ import {
   HotelFormInfo,
   PlaceFormInfo,
   ServiceFormInfo,
+  ThemeContext,
 } from "../../components";
-import { ThemeContext } from "../../components/ThemeProvider";
+import { FLIGHT } from "../../assets/images";
 
 export const FormScreen = () => {
   const methods = useForm({
@@ -69,10 +70,7 @@ export const FormScreenView = () => {
 
   return (
     <div className="h-full text-left w-full relative">
-      <img
-        src="/public/flight_logo.jpg"
-        style={{ width: "100%", height: 300 }}
-      />
+      <img src={FLIGHT} style={{ width: "100%", height: 300 }} />
       <div className="fixed bottom-[100px] right-[250px] opacity-100 transition-opacity duration-300">
         <div
           className={`${
