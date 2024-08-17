@@ -1,5 +1,5 @@
 import { DownOutlined, UpOutlined } from "@ant-design/icons";
-import React, { MouseEventHandler } from "react";
+import { MouseEventHandler } from "react";
 
 interface CommonTitleViewProps {
   index: number;

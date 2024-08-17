@@ -18,7 +18,7 @@ export const PlaceFormInfo = ({
   setIsOpenSection,
   toggleSection,
 }: FormInfo) => {
-  const { register, watch } = useFormContext();
+  const { register } = useFormContext();
   return (
     <>
       <FormTitleView
