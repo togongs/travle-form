@@ -66,7 +66,7 @@ export const DefaultFormInfo = ({
             </div>
 
             <div className="mt-4">
-              <span>1. (필수) 출발 날짜</span>
+              <span>1. (필수) 출발일</span>
               <Input
                 {...register("startDate", {
                   onChange: (event) => {
@@ -75,7 +75,7 @@ export const DefaultFormInfo = ({
                   },
                   required: "출발 날짜를 입력해주세요.",
                 })}
-                placeholder="ex) 20180903"
+                placeholder="ex) 20240703"
                 type="text"
                 maxLength={8}
                 value={startDate?.replace(/(\d{4})(\d{2})(\d{2})/, "$1-$2-$3")}
@@ -83,7 +83,7 @@ export const DefaultFormInfo = ({
               />
             </div>
             <div className="mt-4">
-              <span>2. (필수) 도착 날짜</span>
+              <span>2. (필수) 도착일</span>
               <Input
                 {...register("endDate", {
                   onChange: (event) => {
@@ -91,8 +91,13 @@ export const DefaultFormInfo = ({
                     setValue("endDate", result);
                   },
                   required: "출발 날짜를 입력해주세요.",
+                  validate: (value) => {
+                    if (value < startDate) {
+                      return "도착일이 출발일 보다 빠를 수 없어요!";
+                    }
+                  },
                 })}
-                placeholder="ex) 20180903"
+                placeholder="ex) 20240703"
                 type="text"
                 maxLength={8}
                 value={endDate?.replace(/(\d{4})(\d{2})(\d{2})/, "$1-$2-$3")}
@@ -165,6 +170,7 @@ export const DefaultFormInfo = ({
               type="default"
               onClick={async () => {
                 const isValid = await trigger();
+                console.log("isValid", isValid);
                 if (isValid) {
                   setIsOpenModal(true);
                 }
