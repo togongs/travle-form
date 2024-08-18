@@ -1,12 +1,5 @@
-import { DownOutlined, MoonFilled, UpOutlined } from "@ant-design/icons";
 import { produce } from "immer";
-import {
-  MouseEventHandler,
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { FormProvider, useForm, useFormContext } from "react-hook-form";
 import { DEFAULT_VALUES } from "./config";
 import {
@@ -33,7 +26,6 @@ export const FormScreen = () => {
 export const FormScreenView = () => {
   const { handleSubmit } = useFormContext();
   const { theme, toggleTheme } = useContext(ThemeContext);
-  console.log("theme", theme);
   const [isOpenSection, setIsOpenSection] = useState<boolean[]>([
     true,
     false,
@@ -78,18 +70,45 @@ export const FormScreenView = () => {
           } rounded-full p-3 cursor-pointer`}
           onClick={toggleTheme}
         >
-          {theme === "light" ? (
-            <MoonFilled style={{ fontSize: 24, color: "#ffd700" }} />
-          ) : (
-            <MoonFilled style={{ fontSize: 24, color: "gray" }} />
-          )}
+          {
+            {
+              light: (
+                <svg
+                  className="h-8 w-8 text-yellow-300"
+                  viewBox="0 0 24 24"
+                  fill="#fde047"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  {" "}
+                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                </svg>
+              ),
+              dark: (
+                <svg
+                  className="h-8 w-8 text-gray-500"
+                  viewBox="0 0 24 24"
+                  fill="#6b7280"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  {" "}
+                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                </svg>
+              ),
+            }[theme]
+          }
         </div>
       </div>
       <form
-        className="flex flex-col items-center  p-10"
+        className="flex flex-col items-center p-10"
         onSubmit={handleSubmit(async (data) => {
           console.log("data", data);
-          alert("제출에 성공했습니다 !");
+          alert("제출에 성공했습니다!");
           return window.open("https://www.naver.com", "_self");
         })}
       >
@@ -123,40 +142,6 @@ export const FormScreenView = () => {
           />
         </div>
       </form>
-    </div>
-  );
-};
-
-interface FormTitleViewProps {
-  index: number;
-  number: number;
-  label: string;
-  isOpenSection: boolean[];
-  toggleSection: MouseEventHandler<HTMLDivElement>;
-}
-export const FormTitleView = ({
-  index,
-  number,
-  label,
-  isOpenSection,
-  toggleSection,
-}: FormTitleViewProps) => {
-  return (
-    <div className="flex cursor-pointer h-[40px]" onClick={toggleSection}>
-      <div className="flex items-center flex-1">
-        <div
-          className="flex items-center justify-center text-center w-[24px] h-[24px] 
-    bg-blue-500 rounded-full text-white text-sm mr-3"
-        >
-          {number}
-        </div>
-        <span>{label}</span>
-      </div>
-      {isOpenSection && isOpenSection[index] ? (
-        <UpOutlined />
-      ) : (
-        <DownOutlined />
-      )}
     </div>
   );
 };

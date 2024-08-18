@@ -1,10 +1,10 @@
 import { Draft, produce } from "immer";
 import React, { MutableRefObject, RefObject, useState } from "react";
-import { FormTitleView } from "../../pages/form/FormScreen";
 import { useFormContext } from "react-hook-form";
 import Button from "../Button";
 import { Radio } from "../Input";
 import { ServiceModal } from "../modal";
+import FormTitleView from "./FormTitleView";
 
 interface FormInfo {
   sectionRefs: MutableRefObject<RefObject<HTMLDivElement>[]>;

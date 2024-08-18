@@ -1,9 +1,9 @@
 import { Draft, produce } from "immer";
 import React, { MutableRefObject, RefObject } from "react";
-import { FormTitleView } from "../../pages/form/FormScreen";
 import { useFormContext } from "react-hook-form";
 import { Input, TextArea } from "../Input";
 import Button from "../Button";
+import FormTitleView from "./FormTitleView";
 
 interface FormInfo {
   sectionRefs: MutableRefObject<RefObject<HTMLDivElement>[]>;
