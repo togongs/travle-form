@@ -73,7 +73,7 @@ export const DefaultFormInfo = ({
                     const result = event.target.value.replace(/[^0-9]/g, "");
                     setValue("startDate", result);
                   },
-                  required: "출발 날짜를 입력해주세요.",
+                  required: "출발일을 입력해주세요.",
                 })}
                 placeholder="ex) 20240703"
                 type="text"
@@ -90,7 +90,7 @@ export const DefaultFormInfo = ({
                     const result = event.target.value.replace(/[^0-9]/g, "");
                     setValue("endDate", result);
                   },
-                  required: "출발 날짜를 입력해주세요.",
+                  required: "도착일을 입력해주세요.",
                   validate: (value) => {
                     if (value < startDate) {
                       return "도착일이 출발일 보다 빠를 수 없어요!";
